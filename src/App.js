@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Router, Link } from "@reach/router";
-import { useAsync, Async } from "react-async";
+import { useAsync } from "react-async";
 
 const users = [
   {
@@ -17,12 +17,12 @@ const users = [
   }
 ];
 
-const fetchUser = async ({ id }, { signal }) => {
+const fetchUser = async ({ id }) => {
   await sleep(500);
   return users.filter(user => user.id === id)[0];
 };
 
-const fetchUsers = async ({}, { signal }) => {
+const fetchUsers = async () => {
   await sleep(1000);
   // uncomment the following to force an error
   //throw new Error("server unavailable");
@@ -37,7 +37,6 @@ function UsersProvider(props) {
   const {
     data = { users: [] },
     error,
-    isRejected,
     isPending,
     isSettled,
     reload
@@ -154,7 +153,7 @@ const addUser = async ([user]) => {
 
 const UserForm = props => {
   const { navigate } = props;
-  const { isPending, error, run, promise } = useAsync({ deferFn: addUser });
+  const { isPending, error, run } = useAsync({ deferFn: addUser });
   const [username, setUsername] = useState("");
   const { reload: reloadUsers } = useUsers();
 
