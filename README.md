@@ -1,3 +1,11 @@
+# react-async-playground
+
+learn [React Async](https://docs.react-async.com/), a React component and hook for declarative promise resolution and data fetching
+
+see [`src/App.js`](src/App.js)
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
